@@ -1,4 +1,5 @@
 "use client";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,13 +18,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { signIn } from "next-auth/react";
-
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { type LoginFormInput, loginFormSchema } from "@/lib/validations/user";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { type LoginFormInput, loginFormSchema } from "@/lib/validations/user";
 
 export function LoginForm({
   className,
