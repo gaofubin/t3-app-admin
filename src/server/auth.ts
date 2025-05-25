@@ -9,6 +9,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { db } from "@/server/db";
 import bcrypt from "bcryptjs";
+import { comparePassword } from "@/lib/utils-shared";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -96,7 +97,7 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const isPasswordValid = await bcrypt.compare(
+        const isPasswordValid = await comparePassword(
           credentials.password,
           user.password,
         );
