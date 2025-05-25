@@ -2,10 +2,7 @@
 
 import * as React from "react";
 import {
-  BookOpen,
-  Bot,
   LayoutDashboard,
-  Settings2,
   Snail,
   SquareMenu,
   SquareTerminal,
@@ -13,8 +10,8 @@ import {
   Users,
 } from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavUser } from "@/components/nav-user";
+import { NavMain } from "@/components/layout/nav-main";
+
 import {
   Sidebar,
   SidebarContent,
@@ -25,6 +22,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
+import { NavUser } from "@/components/layout/nav-user";
 
 // This is sample data.
 const data = {
