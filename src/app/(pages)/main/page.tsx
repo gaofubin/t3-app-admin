@@ -27,6 +27,7 @@ export default function HomePage() {
     const { user } = session ?? {};
     setUser({
       id: user?.id ?? "",
+      username: user?.name ?? "",
       email: user?.email ?? "",
       image: user?.image ?? "",
     });

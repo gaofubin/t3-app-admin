@@ -73,23 +73,22 @@ export const authOptions: NextAuthOptions = {
       id: "credentials",
       name: "credentials",
       credentials: {
-        email: {
-          label: "Email",
-          type: "email",
-          placeholder: "hello@example.com",
+        username: {
+          label: "username",
+          type: "text",
         },
         password: {
-          label: "Password",
+          label: "password",
           type: "password",
         },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials.password) {
+        if (!credentials?.username || !credentials.password) {
           return null;
         }
         const user = await db.user.findUnique({
           where: {
-            email: credentials.email,
+            username: credentials.username,
           },
         });
 
@@ -106,6 +105,7 @@ export const authOptions: NextAuthOptions = {
         }
         return {
           id: user.id,
+          name: user.username,
           email: user.email,
         };
       },

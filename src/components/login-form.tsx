@@ -35,14 +35,14 @@ export function LoginForm({
     mode: "onChange",
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
   async function onSubmit(values: LoginFormInput) {
     const res = await signIn("credentials", {
       redirect: false,
-      email: values.email,
+      username: values.username,
       password: values.password,
     });
     if (res?.ok && !res.error) {
@@ -69,16 +69,12 @@ export function LoginForm({
                 <div className="grid gap-2">
                   <FormField
                     control={form.control}
-                    name="email"
+                    name="username"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>Username</FormLabel>
                         <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="m@example.com"
-                            {...field}
-                          />
+                          <Input type="text" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

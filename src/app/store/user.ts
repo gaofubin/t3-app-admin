@@ -2,15 +2,16 @@ import { atom } from "jotai";
 
 export interface User {
   id: string;
-  image: string;
+  username: string;
   email: string;
+  image: string;
 }
 
 export const initialUser = {
   id: "",
-  image: "",
+  username: "",
   email: "",
-  role: "",
+  image: "",
 };
 
 const user = atom(initialUser);

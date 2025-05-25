@@ -47,6 +47,7 @@ export function RegisterForm({
     mode: "onChange",
     resolver: zodResolver(registerFormSchema),
     defaultValues: {
+      username: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -56,6 +57,7 @@ export function RegisterForm({
   function onSubmit(values: RegisterFormInput) {
     console.log(values);
     registerApi.mutate({
+      username: values.username,
       email: values.email,
       password: values.password,
     });
@@ -67,7 +69,7 @@ export function RegisterForm({
         <CardHeader>
           <CardTitle className="text-2xl">Register</CardTitle>
           <CardDescription>
-            Enter your email below to register to your account
+            Enter your user below to register to your account
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -77,16 +79,27 @@ export function RegisterForm({
                 <div className="grid gap-2">
                   <FormField
                     control={form.control}
+                    name="username"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Username</FormLabel>
+                        <FormControl>
+                          <Input type="text" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <FormField
+                    control={form.control}
                     name="email"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="m@example.com"
-                            {...field}
-                          />
+                          <Input type="email" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

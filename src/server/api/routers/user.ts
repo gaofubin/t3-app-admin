@@ -1,19 +1,19 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { comparePassword, hashPassword } from "@/lib/utils-shared";
-import { loginFormSchema } from "@/lib/validations/user";
+import { hashPassword } from "@/lib/utils-shared";
 
 export const userRouter = createTRPCRouter({
   register: publicProcedure
     .input(
       z.object({
+        username: z.string().min(3),
         email: z.string().email(),
         password: z.string().min(8),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       const existingUser = await ctx.db.user.findUnique({
-        where: { email: input.email },
+        where: { username: input.username },
       });
 
       if (existingUser) {
@@ -24,6 +24,7 @@ export const userRouter = createTRPCRouter({
 
       const newUser = await ctx.db.user.create({
         data: {
+          username: input.username,
           email: input.email,
           password: hashedPassword,
         },
