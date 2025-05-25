@@ -1,14 +1,13 @@
+import { type Adapter } from "next-auth/adapters";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import {
   getServerSession,
   type DefaultSession,
   type NextAuthOptions,
 } from "next-auth";
-import { type Adapter } from "next-auth/adapters";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { db } from "@/server/db";
-import bcrypt from "bcryptjs";
 import { comparePassword } from "@/lib/utils-shared";
 
 /**
@@ -41,6 +40,7 @@ declare module "next-auth" {
 export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
+    maxAge: 60 * 60 * 12,
   },
   jwt: {
     maxAge: 60 * 60 * 12,
