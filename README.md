@@ -10,4 +10,4 @@
 
 ### Admin Dashboard
 
-![dashboard](dashboard.png))
+![dashboard](dashboard.png)
