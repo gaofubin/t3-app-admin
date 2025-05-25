@@ -1,7 +1,17 @@
 "use client";
 
 import * as React from "react";
-import { BookOpen, Bot, Settings2, Snail, SquareTerminal } from "lucide-react";
+import {
+  BookOpen,
+  Bot,
+  LayoutDashboard,
+  Settings2,
+  Snail,
+  SquareMenu,
+  SquareTerminal,
+  User,
+  Users,
+} from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
@@ -20,87 +30,30 @@ import {
 const data = {
   navMain: [
     {
-      title: "Playground",
+      title: "Dashboard",
+      url: "#",
+      icon: LayoutDashboard,
+    },
+    {
+      title: "System",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "User",
           url: "#",
+          icon: User,
         },
         {
-          title: "Starred",
+          title: "Role",
           url: "#",
+          icon: Users,
         },
         {
-          title: "Settings",
+          title: "Menu",
           url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
+          icon: SquareMenu,
         },
       ],
     },
@@ -114,12 +67,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <a href="#">
+              <a href="/main">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                   <Snail className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-semibold">T3 Stack Admin</span>
+                  <span className="font-semibold">T3 App Admin</span>
                   <span className="">v0.0.1</span>
                 </div>
               </a>

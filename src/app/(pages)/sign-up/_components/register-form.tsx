@@ -55,7 +55,6 @@ export function RegisterForm({
   });
 
   function onSubmit(values: RegisterFormInput) {
-    console.log(values);
     registerApi.mutate({
       username: values.username,
       email: values.email,
