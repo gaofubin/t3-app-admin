@@ -8,21 +8,21 @@ import { AppSidebar } from "@/components/layout/app-sidebar";
 import Header from "@/components/layout/header";
 
 const MainContent = ({ children }: { children: React.ReactNode }) => {
-  const [_, setUser] = useAtom(userAtom);
+  const [, setUser] = useAtom(userAtom);
 
-  async function getUser() {
-    const session = await getSession();
-    const { user } = session ?? {};
-    setUser({
-      id: user?.id ?? "",
-      username: user?.name ?? "",
-      email: user?.email ?? "",
-      image: user?.image ?? "",
-    });
-  }
   useEffect(() => {
+    async function getUser() {
+      const session = await getSession();
+      const { user } = session ?? {};
+      setUser({
+        id: user?.id ?? "",
+        username: user?.name ?? "",
+        email: user?.email ?? "",
+        image: user?.image ?? "",
+      });
+    }
     void getUser();
-  }, []);
+  }, [setUser]);
 
   return (
     <SidebarProvider>
